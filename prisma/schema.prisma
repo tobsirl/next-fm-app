@@ -39,3 +39,9 @@ model Project {
   @@unique([ownerId, name])
   @@index([ownerId, id])
 }
+
+enum TASK_STATUS {
+  NOT_STARTED
+  STARTED
+  COMPLETED
+}
