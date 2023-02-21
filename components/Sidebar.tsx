@@ -1,22 +1,22 @@
-import Card from "./Card";
-import Image from "next/image";
-import logo from "@/assets/images/logo.png";
-import SidebarLink from "./SidebarLink";
+import Card from './Card'
+import Image from 'next/image'
+import logo from '@/assets/images/logo.png'
+import SidebarLink from './SidebarLink'
 
 const links = [
-  { label: "Home", icon: "Grid", link: "/home" },
+  { label: 'Home', icon: 'Grid', link: '/home' },
   {
-    label: "Calendar",
-    icon: "Calendar",
-    link: "/calendar",
+    label: 'Calendar',
+    icon: 'Calendar',
+    link: '/calendar',
   },
-  { label: "Profile", icon: "User", link: "/profile" },
+  { label: 'Profile', icon: 'User', link: '/profile' },
   {
-    label: "Settings",
-    icon: "Settings",
-    link: "/settings",
+    label: 'Settings',
+    icon: 'Settings',
+    link: '/settings',
   },
-];
+]
 
 const Sidebar = () => {
   return (
@@ -28,7 +28,7 @@ const Sidebar = () => {
         <SidebarLink link={link} />
       ))}
     </Card>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
