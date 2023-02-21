@@ -1,5 +1,5 @@
-import GlassPane from "@/components/GlassPane";
-import "@/styles/global.css";
+import GlassPane from '@/components/GlassPane'
+import '@/styles/global.css'
 
 export default function DashboardRootLayout({ children }) {
   return (
@@ -11,5 +11,5 @@ export default function DashboardRootLayout({ children }) {
         </GlassPane>
       </body>
     </html>
-  );
+  )
 }
