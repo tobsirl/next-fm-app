@@ -7,6 +7,7 @@ export const hashPassword = (password) => bcrypt.hash(password, 10)
 export const comparePasswords = (plainTextPassword, hashedPassword) =>
   bcrypt.compare(plainTextPassword, hashedPassword)
 
+// createJWT is a function that takes a user and returns a JWT
 export const createJWT = (user) => {
   // return jwt.sign({ id: user.id }, 'cookies')
   const iat = Math.floor(Date.now() / 1000)
@@ -18,4 +19,29 @@ export const createJWT = (user) => {
     .setIssuedAt(iat)
     .setNotBefore(iat)
     .sign(new TextEncoder().encode(process.env.JWT_SECRET))
+}
+
+// validateJWT is a function that takes a JWT and returns the payload
+export const validateJWT = async (jwt) => {
+  const { payload } = await jwtVerify(
+    jwt,
+    new TextEncoder().encode(process.env.JWT_SECRET),
+  )
+
+  return payload.payload as any
+}
+
+// getUserFromCookie is a function that takes a cookie and returns a user
+export const getUserFromCookie = async (cookies) => {
+  const jwt = cookies.get(process.env.COOKIE_NAME)
+
+  const { id } = await validateJWT(jwt.value)
+
+  const user = await db.user.findUnique({
+    where: {
+      id: id as string,
+    },
+  })
+
+  return user
 }
