@@ -2,8 +2,10 @@ import bcrypt from 'bcrypt'
 import { SignJWT, jwtVerify } from 'jose'
 import { db } from './db'
 
+// hashPassword is a function that takes a password and returns a hash
 export const hashPassword = (password) => bcrypt.hash(password, 10)
 
+// comparePasswords is a function that takes a plain text password and a hashed password and returns a boolean
 export const comparePasswords = (plainTextPassword, hashedPassword) =>
   bcrypt.compare(plainTextPassword, hashedPassword)
 
