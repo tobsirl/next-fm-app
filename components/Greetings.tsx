@@ -1,17 +1,17 @@
-import { getUserFromCookie } from "@/lib/auth";
-import { cookies } from "next/headers";
-import Button from "./Button";
-import Card from "./Card";
-import { delay } from "@/lib/async";
+import { getUserFromCookie } from '@/lib/auth'
+import { cookies } from 'next/headers'
+import Button from './Button'
+import Card from './Card'
+import { delay } from '@/lib/async'
 
 const getData = async () => {
-  await delay(5000);
-  const user = await getUserFromCookie(cookies());
-  return user;
-};
+  await delay(5000)
+  const user = await getUserFromCookie(cookies())
+  return user
+}
 
 const Greetings = async () => {
-  const user = await getData();
+  const user = await getData()
 
   return (
     <Card className="w-full py-4 relative">
@@ -27,7 +27,7 @@ const Greetings = async () => {
         <Button size="large">Today's Schedule</Button>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default Greetings;
+export default Greetings
