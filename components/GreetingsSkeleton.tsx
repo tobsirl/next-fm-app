@@ -1,4 +1,4 @@
-import Card from "./Card";
+import Card from './Card'
 
 const GreetingsSkeleton = () => {
   return (
@@ -17,7 +17,7 @@ const GreetingsSkeleton = () => {
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default GreetingsSkeleton;
+export default GreetingsSkeleton
