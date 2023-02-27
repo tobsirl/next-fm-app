@@ -1,27 +1,27 @@
-import { FC } from "react";
-import { Prisma } from "@prisma/client";
-import Card from "./Card";
-import clsx from "clsx";
+import { FC } from 'react'
+import { Prisma } from '@prisma/client'
+import Card from './Card'
+import clsx from 'clsx'
 
 const projectWithTasks = Prisma.validator<Prisma.ProjectArgs>()({
   include: { tasks: true },
-});
+})
 
-type ProjectWithTasks = Prisma.ProjectGetPayload<typeof projectWithTasks>;
+type ProjectWithTasks = Prisma.ProjectGetPayload<typeof projectWithTasks>
 
 const formatDate = (date) =>
-  new Date(date).toLocaleDateString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  new Date(date).toLocaleDateString('en-us', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  })
 
 const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
   const completedCount = project.tasks.filter(
-    (t) => t.status === "COMPLETED"
-  ).length;
-  const progress = Math.ceil((completedCount / project.tasks.length) * 100);
+    (t) => t.status === 'COMPLETED',
+  ).length
+  const progress = Math.ceil((completedCount / project.tasks.length) * 100)
 
   return (
     <Card className="!px-6 !py-8 hover:scale-105 transition-all ease-in-out duration-200">
@@ -42,7 +42,7 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
         <div className="w-full h-2 bg-violet-200 rounded-full mb-2">
           <div
             className={clsx(
-              "h-full text-center text-xs text-white bg-violet-600 rounded-full"
+              'h-full text-center text-xs text-white bg-violet-600 rounded-full',
             )}
             style={{ width: `${progress}%` }}
           ></div>
@@ -54,7 +54,7 @@ const ProjectCard: FC<{ project: ProjectWithTasks }> = ({ project }) => {
         </div>
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default ProjectCard;
+export default ProjectCard
