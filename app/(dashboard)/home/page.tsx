@@ -7,6 +7,21 @@ import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
+const getData = async () => {
+  await delay(2000);
+  const user = await getUserFromCookie(cookies());
+  const projects = await db.project.findMany({
+    where: {
+      ownerId: user.id,
+    },
+    include: {
+      tasks: true,
+    },
+  });
+
+  return { projects };
+};
+
 export default async function Page() {
   return (
     <div className="h-full overflow-y-auto pr-6 w-full">
