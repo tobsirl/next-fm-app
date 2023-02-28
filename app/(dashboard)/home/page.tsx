@@ -1,5 +1,6 @@
 import Greetings from '@/components/Greetings'
 import GreetingsSkeleton from '@/components/GreetingsSkeleton'
+import ProjectCard from '@/components/ProjectCard'
 import { delay } from '@/lib/async'
 import { getUserFromCookie } from '@/lib/auth'
 import { db } from '@/lib/db'
