@@ -1,12 +1,12 @@
-import { getUserFromCookie } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { TASK_STATUS } from "@prisma/client";
-import { cookies } from "next/headers";
-import Button from "./Button";
-import Card from "./Card";
+import { getUserFromCookie } from '@/lib/auth'
+import { db } from '@/lib/db'
+import { TASK_STATUS } from '@prisma/client'
+import { cookies } from 'next/headers'
+import Button from './Button'
+import Card from './Card'
 
 const getData = async () => {
-  const user = await getUserFromCookie(cookies());
+  const user = await getUserFromCookie(cookies())
   const tasks = await db.task.findMany({
     where: {
       ownerId: user.id,
@@ -17,14 +17,14 @@ const getData = async () => {
     },
     take: 5,
     orderBy: {
-      due: "asc",
+      due: 'asc',
     },
-  });
+  })
 
-  return tasks;
-};
+  return tasks
+}
 const TaskCard = async ({ title, tasks }) => {
-  const data = tasks || (await getData());
+  const data = tasks || (await getData())
 
   return (
     <Card>
@@ -59,7 +59,7 @@ const TaskCard = async ({ title, tasks }) => {
         )}
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default TasksCard;
+export default TasksCard
