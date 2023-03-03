@@ -1,23 +1,23 @@
-"use client";
-import { createNewProject } from "@/lib/api";
-import { useState } from "react";
-import Modal from "react-modal";
-import Button from "./Button";
-import Input from "./Input";
+'use client'
+import { createNewProject } from '@/lib/api'
+import { useState } from 'react'
+import Modal from 'react-modal'
+import Button from './Button'
+import Input from './Input'
 
-Modal.setAppElement("#modal");
+Modal.setAppElement('#modal')
 
 const NewProject = () => {
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
-  const [name, setName] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
+  const [name, setName] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await createNewProject(name);
-    closeModal();
-  };
+    e.preventDefault()
+    await createNewProject(name)
+    closeModal()
+  }
 
   return (
     <div className="px-6 py-8 hover:scale-105 transition-all ease-in-out duration-200 flex justify-center items-center">
@@ -40,7 +40,7 @@ const NewProject = () => {
         </form>
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default NewProject;
+export default NewProject
