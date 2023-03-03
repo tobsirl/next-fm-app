@@ -1,5 +1,6 @@
 import Greetings from '@/components/Greetings'
 import GreetingsSkeleton from '@/components/GreetingsSkeleton'
+import NewProject from '@/components/NewProject'
 import ProjectCard from '@/components/ProjectCard'
 import TaskCard from '@/components/TaskCard'
 import { delay } from '@/lib/async'
